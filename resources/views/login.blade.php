@@ -115,7 +115,8 @@
   <body> 
    <div class="container">  
     <h1>Sign in your account</h1>  
-    <form action="{{route('login')}}" method= "POST">  
+    <form action="{{route('login')}}" method= "POST"> 
+        @csrf 
      <div class="form-control">  
       <input type="text" id="email" required>  
       <label for="email">Email</label>  

@@ -3,22 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function login(){
-        return view('login');
-    }
+    // ... other methods ...
 
     public function loginpost(Request $request){
-        $credential=[
-            'email'=>$request->email,
-            'password'=>$request->password,
+        $credentials = [
+            'email' => $request->email,
+            'password' => $request->password,
         ];
 
-        if (LoginController::attempt($credential)){
-            return redirect('/home')->with('success','login Success');
+        if (Auth::attempt($credentials)) {
+            // Authentication was successful
+            return redirect('/home')->with('success', 'Login Success');
         }
-        return back()->with('error','error Email or Password');
+
+        // Authentication failed
+        return back()->with('error', 'Incorrect Email or Password');
     }
 }
