@@ -115,14 +115,14 @@
   <body> 
    <div class="container">  
     <h1>Sign in your account</h1>  
-    <form>  
+    <form action="{{route('login')}}" method= "POST">  
      <div class="form-control">  
-      <input type="text" required>  
-      <label>Email</label>  
+      <input type="text" id="email" required>  
+      <label for="email">Email</label>  
          </div>  
      <div class="form-control">  
-      <input type="password" required>  
-      <label>Password</label>  
+      <input type="password" name="password" id="password" required>  
+      <label for="password">Password</label>  
      </div>  
      <div class="form-control"> 
         <label>year</label>
