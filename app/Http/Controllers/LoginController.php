@@ -9,7 +9,7 @@ class LoginController extends Controller
 {
     // ... other methods ...
 
-    public function loginpost(Request $request){
+    public function login(Request $request){
         $credentials = [
             'email' => $request->email,
             'password' => $request->password,
