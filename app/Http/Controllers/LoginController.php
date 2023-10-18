@@ -8,12 +8,15 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     // ... other methods ...
+    public function login(){
+        return view('login');
+    }
 
-    public function login(Request $request){
-        $credentials = [
+    public function loginpost(Request $request){
+        $credentials = $request->validate([
             'email' => $request->email,
             'password' => $request->password,
-        ];
+        ]);
 
         if (Auth::attempt($credentials)) {
             // Authentication was successful
@@ -21,6 +24,6 @@ class LoginController extends Controller
         }
 
         // Authentication failed
-        return back()->with('error', 'Incorrect Email or Password');
+        return back()->withErrors('error', 'Incorrect Email or Password');
     }
 }
